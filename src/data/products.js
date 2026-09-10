@@ -1,146 +1,98 @@
 export const products = [
   {
     id: 1,
-    name: "Mohsin Heavyweight Oversized Acid Wash Tee",
-    brand: "MOHSIN.FIT",
-    category: "Men",
-    price: 799,
-    originalPrice: 1599,
-    discount: "50% OFF",
+    name: "Cute Printed Mini Crossbody Bag",
+    category: "Ladies Bags",
+    price: 399,
+    originalPrice: 799,
     rating: 4.8,
-    reviewsCount: 1420,
     isTrending: true,
-    images: [
-      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80"
-    ],
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Acid Black", "Vintage Grey"],
-    description: "240 GSM heavy cotton fabric with custom drop-shoulder fit. Bio-washed for a premium vintage handfeel."
+    description: "Trendy printed canvas mini bag with adjustable strap. Compact and stylish for everyday carry.",
+    images: ["https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&q=80&w=800"],
+    details: "Durable fabric with smooth zipper closure."
   },
   {
     id: 2,
-    name: "Women's Satin Silk Slip Summer Dress",
-    brand: "MOHSIN.FIT",
-    category: "Women",
-    price: 1499,
-    originalPrice: 2999,
-    discount: "50% OFF",
+    name: "Aesthetic Woven Pattern Sling Bag",
+    category: "Ladies Bags",
+    price: 499,
+    originalPrice: 899,
     rating: 4.9,
-    reviewsCount: 680,
     isTrending: true,
-    images: [
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=800&q=80"
-    ],
-    sizes: ["XS", "S", "M", "L"],
-    colors: ["Emerald Green", "Burgundy"],
-    description: "Luxurious satin finish with adjustable cowl neck straps. Perfect for evening outings and date nights."
+    description: "Handcrafted geometric pattern handbag with shoulder strap and top handles.",
+    images: ["https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&q=80&w=800"],
+    details: "Premium knit design with spacious compartment."
   },
   {
     id: 3,
-    name: "Minimalist Essential Charcoal Hoodie",
-    brand: "MOHSIN.FIT",
-    category: "Unisex",
-    price: 1299,
-    originalPrice: 2499,
-    discount: "48% OFF",
-    rating: 4.7,
-    reviewsCount: 2100,
+    name: "Luxury 3D Leaf Designer Wall Clock",
+    category: "Home Decor",
+    price: 1899,
+    originalPrice: 3499,
+    rating: 5.0,
     isTrending: true,
-    images: [
-      "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80"
-    ],
-    sizes: ["M", "L", "XL", "XXL"],
-    colors: ["Charcoal Grey", "Olive"],
-    description: "320 GSM brushed fleece inner lining for maximum warmth and comfort during cool seasons."
+    description: "Royal 3D metal leaf decorative wall clock for living room and modern home interiors.",
+    images: ["https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&q=80&w=800"],
+    details: "Silent sweep movement, premium metal finish."
   },
   {
     id: 4,
-    name: "Men's Relaxed Fit Cargo Utility Pants",
-    brand: "MOHSIN.FIT",
-    category: "Men",
-    price: 1199,
-    originalPrice: 2199,
-    discount: "45% OFF",
+    name: "Multipurpose Sink Corner Strainer Basket",
+    category: "Kitchen & Home",
+    price: 199,
+    originalPrice: 399,
     rating: 4.6,
-    reviewsCount: 950,
-    isTrending: true,
-    images: [
-      "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=80"
-    ],
-    sizes: ["30", "32", "34", "36"],
-    colors: ["Khaki", "Tactical Black"],
-    description: "Multi-pocket tactical streetwear cargo pants crafted with durable ripstop cotton."
+    isTrending: false,
+    description: "Suction cup triangular sink filter basket for easy food waste drainage and cleaning.",
+    images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"],
+    details: "Food grade plastic with magnetic suction."
   },
   {
     id: 5,
-    name: "Women's Cropped Puffer Winter Jacket",
-    brand: "MOHSIN.FIT",
-    category: "Women",
-    price: 1899,
-    originalPrice: 3499,
-    discount: "45% OFF",
-    rating: 4.8,
-    reviewsCount: 430,
+    name: "Anti-Collision Silicone Door Handle Stopper",
+    category: "Home Utilities",
+    price: 149,
+    originalPrice: 299,
+    rating: 4.7,
     isTrending: false,
-    images: [
-      "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80"
-    ],
-    sizes: ["S", "M", "L"],
-    colors: ["Matte Black", "Cream White"],
-    description: "Insulated water-resistant crop jacket with high neck collar and cinch-cord waist."
+    description: "Soft elastic wall protector and noise-reducing door bumper knob cover.",
+    images: ["https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&q=80&w=800"],
+    details: "Flexible silicone material, easy installation."
   },
   {
     id: 6,
-    name: "Vintage Distressed Trucker Denim Jacket",
-    brand: "MOHSIN.FIT",
-    category: "Men",
-    price: 1699,
-    originalPrice: 3299,
-    discount: "48% OFF",
-    rating: 4.7,
-    reviewsCount: 810,
-    isTrending: false,
-    images: [
-      "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80"
-    ],
-    sizes: ["M", "L", "XL"],
-    colors: ["Indigo Wash"],
-    description: "Classic rigid denim with custom button hardware and dual chest flap pockets."
+    name: "Vintage Square Leather Digital Watch",
+    category: "Watches & Accessories",
+    price: 799,
+    originalPrice: 1499,
+    rating: 4.9,
+    isTrending: true,
+    description: "Classic retro style bronze square casing digital watch with genuine leather strap.",
+    images: ["https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800"],
+    details: "Water resistant, world time display."
   },
   {
     id: 7,
-    name: "Women's High-Waisted Wide Leg Trousers",
-    brand: "MOHSIN.FIT",
-    category: "Women",
-    price: 999,
-    originalPrice: 1999,
-    discount: "50% OFF",
-    rating: 4.5,
-    reviewsCount: 520,
+    name: "Double Layer Wall Mounted Spice Rack Holder",
+    category: "Kitchen & Home",
+    price: 599,
+    originalPrice: 1199,
+    rating: 4.8,
     isTrending: false,
-    images: [
-      "https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?auto=format&fit=crop&w=800&q=80"
-    ],
-    sizes: ["26", "28", "30", "32"],
-    colors: ["Beige", "Black"],
-    description: "Flowy tailored trousers featuring pleats and side slash pockets for a chic look."
+    description: "Space-saving kitchen organizer shelf for oil bottles, condiments, and jars.",
+    images: ["https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=800"],
+    details: "No drilling required, strong adhesive backing."
   },
   {
     id: 8,
-    name: "Streetwear Graphic Print Back Tee",
-    brand: "MOHSIN.FIT",
-    category: "Men",
-    price: 699,
-    originalPrice: 1399,
-    discount: "50% OFF",
-    rating: 4.6,
-    reviewsCount: 1100,
+    name: "Waterproof Designer Fridge Top Cover Set",
+    category: "Home Decor",
+    price: 299,
+    originalPrice: 599,
+    rating: 4.7,
     isTrending: false,
-    images: [
-      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80"
-    ],
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Jet Black"],
-    description: "High-density puff screen print design on pure 220 GSM combed cotton fabric."
+    description: "Printed dustproof refrigerator cover with side storage pockets and mat set.",
+    images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"],
+    details: "Easy to clean PVC material, multi-pocket design."
   }
 ];
