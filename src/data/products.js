@@ -11,7 +11,7 @@ export const products = [
     reviewsCount: 28,
     isTrending: true,
     description: "Color changing water-filled LED glitter lamp candle for romantic and festive decor.",
-    images: ["https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&q=80&w=800"],
+    images: ["/681871014_4503373626565839_318356133869151532_n.jpg"],
     details: "Battery & USB operated with auto-rotating glitter effect."
   },
   {
@@ -25,7 +25,7 @@ export const products = [
     reviewsCount: 19,
     isTrending: true,
     description: "Handcrafted romantic snow globe with music and LED light.",
-    images: ["https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&q=80&w=800"],
+    images: ["/682170619_4503368179899717_485901234910283912_n.jpg"],
     details: "Glass globe with heavy resin base."
   },
   {
@@ -39,7 +39,7 @@ export const products = [
     reviewsCount: 12,
     isTrending: false,
     description: "Transparent luxury hamper box with golden border & rope handle.",
-    images: ["https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800"],
+    images: ["/683073091_4503373856565816_102839182390182312_n.jpg"],
     details: "Ideal for birthday & festive gift packing."
   },
 
@@ -55,7 +55,7 @@ export const products = [
     reviewsCount: 34,
     isTrending: true,
     description: "360-degree rotating star sphere projector lamp for bedroom.",
-    images: ["https://images.unsplash.com/photo-1507499739999-097706ad8914?auto=format&fit=crop&q=80&w=800"],
+    images: ["/683135112_4503375106565691_590128391023812039_n.jpg"],
     details: "Multiple light modes with USB power."
   },
   {
@@ -69,7 +69,7 @@ export const products = [
     reviewsCount: 15,
     isTrending: false,
     description: "Modern metallic leaf frame silent wall clock for living room.",
-    images: ["https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&q=80&w=800"],
+    images: ["/683390622_4503367993233069_120398102938102938_n.jpg"],
     details: "Silent quartz movement with metallic polish."
   },
 
@@ -85,7 +85,7 @@ export const products = [
     reviewsCount: 15,
     isTrending: true,
     description: "Elegant gold finish multi-leaf long hanging drop earrings.",
-    images: ["https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&q=80&w=800"],
+    images: ["/679577626_4503374583232415_829301928301928301_n.jpg"],
     details: "Anti-tarnish skin friendly alloy."
   },
   {
@@ -99,7 +99,7 @@ export const products = [
     reviewsCount: 22,
     isTrending: true,
     description: "Traditional stone studded ring for partywear.",
-    images: ["https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=800"],
+    images: ["/680411063_4503374579899077_102938102938102938_n.jpg"],
     details: "Adjustable ring size."
   },
   {
@@ -113,7 +113,7 @@ export const products = [
     reviewsCount: 17,
     isTrending: false,
     description: "Sleek Korean style pendant chain necklace.",
-    images: ["https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800"],
+    images: ["/681192749_4503375049899030_203981029381029381_n.jpg"],
     details: "High polish finish."
   },
 
@@ -129,7 +129,7 @@ export const products = [
     reviewsCount: 24,
     isTrending: true,
     description: "Compact printed cotton-knit sling pouch for smartphones and cash.",
-    images: ["https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800"],
+    images: ["/683496173_4503368216566380_301928301928301928_n.jpg"],
     details: "Shoulder strap with magnetic latch."
   },
   {
@@ -143,7 +143,7 @@ export const products = [
     reviewsCount: 11,
     isTrending: false,
     description: "Handcrafted mini handbag pouch for girls.",
-    images: ["https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&q=80&w=800"],
+    images: ["/683760070_4503368089899726_401928301928301928_n.jpg"],
     details: "Durable washable canvas material."
   },
 
@@ -159,7 +159,7 @@ export const products = [
     reviewsCount: 40,
     isTrending: false,
     description: "Elastic stretchable clothes drying rope with positioning clips.",
-    images: ["https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&q=80&w=800"],
+    images: ["/651188645_4458170491066153_102938102938102938_n.jpg"],
     details: "Rubber wrapped steel wire with hooks."
   },
   {
@@ -173,7 +173,7 @@ export const products = [
     reviewsCount: 16,
     isTrending: false,
     description: "Wall mounted non-slip soap dish box with water tray.",
-    images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800"],
+    images: ["/652670327_4458170394419496_501928301928301928_n.jpg"],
     details: "Strong adhesive pad included."
   },
   {
@@ -187,7 +187,7 @@ export const products = [
     reviewsCount: 20,
     isTrending: false,
     description: "Multipurpose bathroom organizer stand with cups.",
-    images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"],
+    images: ["/682843954_4503374796565722_601928301928301928_n.jpg"],
     details: "Drill-free sticker setup."
   }
 ];
