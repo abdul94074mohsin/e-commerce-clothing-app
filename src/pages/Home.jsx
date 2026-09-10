@@ -28,7 +28,7 @@ export default function Home() {
           >
             New Gallery Collection
           </motion.span>
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -69,11 +69,11 @@ export default function Home() {
           SHOP BY CATEGORY
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
           <Link to="/shop?category=Ladies Bags" className="relative h-64 rounded-2xl overflow-hidden group shadow-md">
             <img
               src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=800&q=80"
-              alt="Ladies Fancy Bags"
+              alt="Ladies Bags"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end justify-center pb-6">
@@ -86,7 +86,7 @@ export default function Home() {
           <Link to="/shop?category=Home Decor" className="relative h-64 rounded-2xl overflow-hidden group shadow-md">
             <img
               src="https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&w=800&q=80"
-              alt="Home Decor & Clocks"
+              alt="Home Decor"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end justify-center pb-6">
@@ -96,15 +96,28 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link to="/shop?category=Gift Items" className="relative h-64 rounded-2xl overflow-hidden group shadow-md">
+          <Link to="/shop?category=Gifts %26 Antiques" className="relative h-64 rounded-2xl overflow-hidden group shadow-md">
             <img
               src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80"
-              alt="Unique Gift Items"
+              alt="Gifts & Antiques"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end justify-center pb-6">
               <span className="text-white text-lg font-black uppercase tracking-widest border-b-2 border-purple-400 pb-1">
                 GIFTS & ANTIQUES
+              </span>
+            </div>
+          </Link>
+
+          <Link to="/shop?category=Jewellery" className="relative h-64 rounded-2xl overflow-hidden group shadow-md">
+            <img
+              src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80"
+              alt="Jewellery"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end justify-center pb-6">
+              <span className="text-white text-lg font-black uppercase tracking-widest border-b-2 border-purple-400 pb-1">
+                JEWELLERY
               </span>
             </div>
           </Link>
