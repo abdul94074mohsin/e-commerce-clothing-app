@@ -35,15 +35,15 @@ export default function ProductDetails() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full overflow-hidden">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
 
-        {/* Product Image - Fixed Max Height & Object Fit */}
-        <div className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 flex items-center justify-center p-4 max-h-[500px]">
+        {/* Product Image Container */}
+        <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100 flex items-center justify-center h-[350px] sm:h-[420px] w-full">
           <img 
             src={product.images ? product.images[0] : product.image} 
             alt={product.name} 
-            className="max-h-[460px] w-auto max-w-full object-contain rounded-xl" 
+            className="h-full w-full object-contain rounded-xl" 
           />
         </div>
 
@@ -53,7 +53,7 @@ export default function ProductDetails() {
             <span className="text-xs font-bold uppercase text-purple-700 tracking-wider">
               {product.brand || 'Purple Gallery'}
             </span>
-            <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1 leading-tight break-words">
+            <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1 leading-snug">
               {product.name}
             </h1>
 
