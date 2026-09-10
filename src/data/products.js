@@ -11,7 +11,7 @@ export const products = [
     reviewsCount: 28,
     isTrending: true,
     description: "Color changing water-filled LED glitter lamp candle for romantic and festive decor.",
-    images: ["/681871014_4503373626565839_318356133869151532_n.jpg"],
+    images: ["/646767539_4447744255462110_624.jpg"],
     details: "Battery & USB operated with auto-rotating glitter effect."
   },
   {
@@ -25,12 +25,12 @@ export const products = [
     reviewsCount: 19,
     isTrending: true,
     description: "Handcrafted romantic snow globe with music and LED light.",
-    images: ["/682170619_4503368179899717_485901234910283912_n.jpg"],
+    images: ["/651186625_4458170761086126_373.jpg"],
     details: "Glass globe with heavy resin base."
   },
   {
     id: 3,
-    name: "PVC Transparent Hamper Box Set",
+    name: "PVC Transparent Gift Hamper Box",
     category: "Gifts & Antiques",
     price: 499,
     originalPrice: 899,
@@ -39,7 +39,7 @@ export const products = [
     reviewsCount: 12,
     isTrending: false,
     description: "Transparent luxury hamper box with golden border & rope handle.",
-    images: ["/683073091_4503373856565816_102839182390182312_n.jpg"],
+    images: ["/651188645_4458170491086153_455.jpg"],
     details: "Ideal for birthday & festive gift packing."
   },
 
@@ -55,7 +55,7 @@ export const products = [
     reviewsCount: 34,
     isTrending: true,
     description: "360-degree rotating star sphere projector lamp for bedroom.",
-    images: ["/683135112_4503375106565691_590128391023812039_n.jpg"],
+    images: ["/652670327_4458170394419496_809.jpg"],
     details: "Multiple light modes with USB power."
   },
   {
@@ -69,7 +69,7 @@ export const products = [
     reviewsCount: 15,
     isTrending: false,
     description: "Modern metallic leaf frame silent wall clock for living room.",
-    images: ["/683390622_4503367993233069_120398102938102938_n.jpg"],
+    images: ["/679577626_4503374533232415_246.jpg"],
     details: "Silent quartz movement with metallic polish."
   },
 
@@ -85,7 +85,7 @@ export const products = [
     reviewsCount: 15,
     isTrending: true,
     description: "Elegant gold finish multi-leaf long hanging drop earrings.",
-    images: ["/679577626_4503374583232415_829301928301928301_n.jpg"],
+    images: ["/680411063_4503374579899077_407.jpg"],
     details: "Anti-tarnish skin friendly alloy."
   },
   {
@@ -99,7 +99,7 @@ export const products = [
     reviewsCount: 22,
     isTrending: true,
     description: "Traditional stone studded ring for partywear.",
-    images: ["/680411063_4503374579899077_102938102938102938_n.jpg"],
+    images: ["/681192719_4503375049899030_265.jpg"],
     details: "Adjustable ring size."
   },
   {
@@ -113,7 +113,7 @@ export const products = [
     reviewsCount: 17,
     isTrending: false,
     description: "Sleek Korean style pendant chain necklace.",
-    images: ["/681192749_4503375049899030_203981029381029381_n.jpg"],
+    images: ["/681871014_4503373626565839_122.jpg"],
     details: "High polish finish."
   },
 
@@ -129,7 +129,7 @@ export const products = [
     reviewsCount: 24,
     isTrending: true,
     description: "Compact printed cotton-knit sling pouch for smartphones and cash.",
-    images: ["/683496173_4503368216566380_301928301928301928_n.jpg"],
+    images: ["/682170619_4503374026565799_800.jpg"],
     details: "Shoulder strap with magnetic latch."
   },
   {
@@ -143,7 +143,7 @@ export const products = [
     reviewsCount: 11,
     isTrending: false,
     description: "Handcrafted mini handbag pouch for girls.",
-    images: ["/683760070_4503368089899726_401928301928301928_n.jpg"],
+    images: ["/683073091_45033/3856565816_475.jpg"],
     details: "Durable washable canvas material."
   },
 
@@ -159,7 +159,7 @@ export const products = [
     reviewsCount: 40,
     isTrending: false,
     description: "Elastic stretchable clothes drying rope with positioning clips.",
-    images: ["/651188645_4458170491066153_102938102938102938_n.jpg"],
+    images: ["/683135112_4503375106565691_042.jpg"],
     details: "Rubber wrapped steel wire with hooks."
   },
   {
@@ -173,12 +173,12 @@ export const products = [
     reviewsCount: 16,
     isTrending: false,
     description: "Wall mounted non-slip soap dish box with water tray.",
-    images: ["/652670327_4458170394419496_501928301928301928_n.jpg"],
+    images: ["/683390622_4503367993233069_209.jpg"],
     details: "Strong adhesive pad included."
   },
   {
     id: 13,
-    name: "Wall Mounted Toothbrush & Tumbler Holder",
+    name: "Wall Mounted Toothbrush Holder Set",
     category: "Home Utilities",
     price: 320,
     originalPrice: 650,
