@@ -17,11 +17,11 @@ export default function App() {
     <CartProvider>
       <Router>
         <div className="flex flex-col min-h-screen bg-gray-50">
-          {/* Top Navbar Sabse Upar Hoga */}
+          {/* Fixed Top Navbar */}
           <Navbar />
 
-          {/* Main Content Pages */}
-          <main className="flex-grow">
+          {/* Fixed navbar height offset dene ke liye pt-24 sm:pt-28 add kiya hai */}
+          <main className="flex-grow pt-24 sm:pt-28">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/shop" element={<Shop />} />
@@ -32,7 +32,7 @@ export default function App() {
             </Routes>
           </main>
 
-          {/* Footer Sabse Niche Hoga */}
+          {/* Footer */}
           <Footer />
         </div>
       </Router>
