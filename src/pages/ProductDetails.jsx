@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
@@ -9,6 +9,11 @@ export default function ProductDetails() {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const product = products.find((p) => p.id === parseInt(id));
+
+  // Page bottom se open hone ke issue ke liye automatic scroll up
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   const [selectedSize, setSelectedSize] = useState(product?.sizes ? product.sizes[0] : '');
   const [selectedColor, setSelectedColor] = useState(product?.colors ? product.colors[0] : '');
@@ -32,7 +37,7 @@ export default function ProductDetails() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        
+
         {/* Product Image */}
         <div className="bg-gray-100 rounded-2xl overflow-hidden aspect-[3/4]">
           <img 
@@ -49,7 +54,7 @@ export default function ProductDetails() {
               {product.brand || 'Purple Gallery'}
             </span>
             <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">{product.name}</h1>
-            
+
             <div className="flex items-center gap-2 mt-3 text-sm text-amber-500 font-bold">
               <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
               <span>{product.rating || '5.0'}</span>
@@ -69,7 +74,14 @@ export default function ProductDetails() {
 
           <p className="text-gray-600 text-sm leading-relaxed">{product.description}</p>
 
-          {/* Size Options (if available) */}
+          {/* Details Extra */}
+          {product.details && (
+            <div className="bg-purple-50 p-4 rounded-xl border border-purple-100">
+              <p className="text-xs font-semibold text-purple-900">{product.details}</p>
+            </div>
+          )}
+
+          {/* Size Options */}
           {product.sizes && product.sizes.length > 0 && (
             <div>
               <label className="block text-sm font-bold uppercase tracking-wider mb-2 text-slate-800">Select Size</label>
@@ -89,7 +101,7 @@ export default function ProductDetails() {
             </div>
           )}
 
-          {/* Color Options (if available) */}
+          {/* Color Options */}
           {product.colors && product.colors.length > 0 && (
             <div>
               <label className="block text-sm font-bold uppercase tracking-wider mb-2 text-slate-800">Select Color</label>
