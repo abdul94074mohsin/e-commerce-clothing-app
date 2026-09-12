@@ -41,49 +41,18 @@ export default function Navbar() {
           <Link
             to="/"
             onClick={closeMenu}
-            className="flex items-center gap-1.5 sm:gap-2 shrink-0"
+            className="flex items-center shrink-0"
           >
-            {/* PG HEART LOGO */}
-            <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center">
-
-              <div
-                className="
-                  absolute
-                  w-7 h-7 sm:w-8 sm:h-8
-                  rotate-45
-                  rounded-[7px]
-                  bg-purple-800
-                  border border-yellow-400
-                  shadow-sm
-                "
-              />
-
-              <div
-                className="
-                  relative z-10
-                  w-7 h-7 sm:w-8 sm:h-8
-                  rounded-full
-                  bg-purple-950
-                  border-2 border-yellow-400
-                  flex items-center justify-center
-                "
-              >
-                <span className="text-[9px] sm:text-[10px] font-black text-yellow-300">
-                  PG
-                </span>
-              </div>
-            </div>
-
-            {/* BRAND NAME */}
-            <div className="leading-none">
-              <div className="text-base sm:text-xl font-black tracking-tight text-purple-950">
-                Purple <span className="text-purple-700">Gallery</span>
-              </div>
-
-              <div className="text-[6px] sm:text-[7px] text-yellow-700 font-semibold text-center mt-1">
-                The Antique Shop
-              </div>
-            </div>
+            <img
+              src="/purple gallery.jpg"
+              alt="Purple Gallery"
+              className="
+                h-11 sm:h-12
+                w-auto
+                max-w-[210px]
+                object-contain
+              "
+            />
           </Link>
 
 
@@ -272,7 +241,7 @@ export default function Navbar() {
             </Link>
 
 
-            {/* MOBILE HAMBURGER - LIGHT GLASS */}
+            {/* MOBILE HAMBURGER */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
