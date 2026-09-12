@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import {
   PlusCircle,
@@ -13,6 +14,8 @@ import {
 
 export default function Navbar() {
   const { user, isAuthenticated, isAdmin, logout } = useAuth();
+  const { totalCount } = useCart();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const closeMenu = () => {
@@ -23,7 +26,7 @@ export default function Navbar() {
     <header className="fixed top-3 left-0 right-0 z-50 px-3 sm:px-5">
       <div className="max-w-7xl mx-auto">
 
-        {/* MAIN NAVBAR */}
+        {/* ================= MAIN NAVBAR ================= */}
         <div
           className="
             h-14 sm:h-16
@@ -37,7 +40,7 @@ export default function Navbar() {
           "
         >
 
-          {/* LOGO */}
+          {/* ================= LOGO ================= */}
           <Link
             to="/"
             onClick={closeMenu}
@@ -67,8 +70,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-
-          {/* DESKTOP NAV */}
+          {/* ================= DESKTOP NAV ================= */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
 
             <Link
@@ -101,10 +103,10 @@ export default function Navbar() {
 
           </nav>
 
-
-          {/* DESKTOP ACTIONS */}
+          {/* ================= DESKTOP ACTIONS ================= */}
           <div className="hidden lg:flex items-center gap-2">
 
+            {/* CART */}
             <Link
               to="/cart"
               className="
@@ -119,25 +121,29 @@ export default function Navbar() {
                 hover:bg-white/90
                 transition
               "
+              aria-label="Shopping Cart"
             >
               <ShoppingBag className="w-4.5 h-4.5" />
 
-              <span
-                className="
-                  absolute -top-1 -right-1
-                  w-4 h-4
-                  rounded-full
-                  bg-pink-500
-                  text-white
-                  text-[8px]
-                  flex items-center justify-center
-                  font-bold
-                "
-              >
-                0
-              </span>
+              {/* REAL CART COUNT */}
+              {totalCount > 0 && (
+                <span
+                  className="
+                    absolute -top-1 -right-1
+                    min-w-4 h-4
+                    px-1
+                    rounded-full
+                    bg-pink-500
+                    text-white
+                    text-[8px]
+                    flex items-center justify-center
+                    font-bold
+                  "
+                >
+                  {totalCount}
+                </span>
+              )}
             </Link>
-
 
             {/* ADMIN */}
             {isAdmin && (
@@ -159,7 +165,6 @@ export default function Navbar() {
                 Add Product
               </Link>
             )}
-
 
             {/* USER / LOGIN */}
             {isAuthenticated ? (
@@ -210,10 +215,10 @@ export default function Navbar() {
 
           </div>
 
-
-          {/* MOBILE ACTIONS */}
+          {/* ================= MOBILE ACTIONS ================= */}
           <div className="flex lg:hidden items-center gap-1.5">
 
+            {/* MOBILE CART */}
             <Link
               to="/cart"
               onClick={closeMenu}
@@ -228,25 +233,29 @@ export default function Navbar() {
                 text-purple-950
                 shadow-sm
               "
+              aria-label="Shopping Cart"
             >
               <ShoppingBag className="w-4.5 h-4.5" />
 
-              <span
-                className="
-                  absolute -top-1 -right-1
-                  w-4 h-4
-                  rounded-full
-                  bg-pink-500
-                  text-white
-                  text-[8px]
-                  flex items-center justify-center
-                  font-bold
-                "
-              >
-                0
-              </span>
+              {/* REAL CART COUNT */}
+              {totalCount > 0 && (
+                <span
+                  className="
+                    absolute -top-1 -right-1
+                    min-w-4 h-4
+                    px-1
+                    rounded-full
+                    bg-pink-500
+                    text-white
+                    text-[8px]
+                    flex items-center justify-center
+                    font-bold
+                  "
+                >
+                  {totalCount}
+                </span>
+              )}
             </Link>
-
 
             {/* HAMBURGER */}
             <button
@@ -279,8 +288,7 @@ export default function Navbar() {
 
         </div>
 
-
-        {/* MOBILE MENU */}
+        {/* ================= MOBILE MENU ================= */}
         {mobileMenuOpen && (
           <div
             className="
@@ -397,6 +405,7 @@ export default function Navbar() {
               )}
 
             </nav>
+
           </div>
         )}
 
