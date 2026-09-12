@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 import ProductCard from '../components/ProductCard';
 
 export default function Shop() {
+  const { productsList } = useProducts();
+
   const [searchParams] = useSearchParams();
   const categoryParam = searchParams.get('category');
   const searchQuery = searchParams.get('search');
@@ -17,49 +19,96 @@ export default function Shop() {
     'Ladies Bags'
   ];
 
-  const [selectedCategory, setSelectedCategory] = useState(categoryParam || 'All');
+  const [selectedCategory, setSelectedCategory] = useState(
+    categoryParam || 'All'
+  );
 
-  // Sync state when URL category query changes
   useEffect(() => {
-    if (categoryParam) {
-      setSelectedCategory(categoryParam);
-    }
+    setSelectedCategory(categoryParam || 'All');
   }, [categoryParam]);
 
-  const filteredProducts = products.filter((p) => {
-    if (selectedCategory !== 'All' && p.category !== selectedCategory) return false;
-    if (searchQuery && !p.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+  const filteredProducts = productsList.filter((product) => {
+    if (
+      selectedCategory !== 'All' &&
+      product.category !== selectedCategory
+    ) {
+      return false;
+    }
+
+    if (
+      searchQuery &&
+      !product.name
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    ) {
+      return false;
+    }
+
     return true;
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <h1 className="text-3xl font-black uppercase tracking-wider mb-6">Shop Collection</h1>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 pb-16">
 
-      {/* Dynamic Category Filter Buttons */}
+      {/* Heading */}
+      <div className="mb-8">
+        <p className="text-xs font-black uppercase tracking-[0.2em] text-purple-600 mb-2">
+          Purple Gallery
+        </p>
+
+        <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-slate-900">
+          Shop Collection
+        </h1>
+
+        <p className="text-sm text-gray-500 mt-2">
+          Discover our latest collection and handpicked products.
+        </p>
+      </div>
+
+      {/* Category Filter */}
       <div className="flex gap-3 mb-8 overflow-x-auto pb-2 scrollbar-none">
-        {categories.map((cat) => (
+        {categories.map((category) => (
           <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-colors ${
-              selectedCategory === cat ? 'bg-purple-900 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`
+              px-5 py-2.5
+              rounded-full
+              text-sm font-bold
+              whitespace-nowrap
+              transition-all
+              ${
+                selectedCategory === category
+                  ? 'bg-purple-700 text-white shadow-lg shadow-purple-500/20'
+                  : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300 hover:text-purple-700'
+              }
+            `}
           >
-            {cat}
+            {category}
           </button>
         ))}
       </div>
 
-      {/* Products Grid */}
+      {/* Products */}
       {filteredProducts.length > 0 ? (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
           ))}
         </div>
       ) : (
-        <div className="text-center py-20 text-gray-500">No products found matching your search.</div>
+        <div className="text-center py-20">
+          <h2 className="text-xl font-black text-slate-800">
+            No Products Found
+          </h2>
+
+          <p className="text-sm text-gray-500 mt-2">
+            Try another category or search.
+          </p>
+        </div>
       )}
     </div>
   );

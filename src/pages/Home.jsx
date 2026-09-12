@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-
 import {
   ArrowRight,
   ChevronLeft,
@@ -9,7 +8,7 @@ import {
   Sparkles
 } from 'lucide-react';
 
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 import ProductCard from '../components/ProductCard';
 
 const slides = [
@@ -28,11 +27,18 @@ const slides = [
 ];
 
 export default function Home() {
-  const trendingProducts = products.filter((p) => p.isTrending);
+  const { productsList } = useProducts();
+
+  // ProductContext se products aa rahe hain
+  // Admin ke naye products bhi yahan available honge
+  const trendingProducts = productsList.filter(
+    (product) => product.isTrending
+  );
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
   /* ================= AUTO SLIDER ================= */
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) =>
@@ -59,6 +65,7 @@ export default function Home() {
     <div className="bg-gradient-to-b from-purple-50 via-white to-pink-50">
 
       {/* ================= HERO SLIDER ================= */}
+
       <section className="relative h-[88vh] min-h-[650px] overflow-hidden">
 
         {/* Background Slides */}
@@ -75,27 +82,59 @@ export default function Home() {
           />
         </AnimatePresence>
 
-        {/* Dark / Purple Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r
-          from-black/75 via-purple-950/45 to-black/20" />
+        {/* Overlay */}
+        <div
+          className="
+            absolute inset-0
+            bg-gradient-to-r
+            from-black/75
+            via-purple-950/45
+            to-black/20
+          "
+        />
 
-        <div className="absolute inset-0 bg-gradient-to-t
-          from-black/70 via-transparent to-purple-950/20" />
+        <div
+          className="
+            absolute inset-0
+            bg-gradient-to-t
+            from-black/70
+            via-transparent
+            to-purple-950/20
+          "
+        />
 
         {/* Decorative Glow */}
-        <div className="absolute top-32 right-20
-          w-72 h-72 rounded-full
-          bg-fuchsia-500/20 blur-[100px]" />
+        <div
+          className="
+            absolute top-32 right-20
+            w-72 h-72
+            rounded-full
+            bg-fuchsia-500/20
+            blur-[100px]
+          "
+        />
 
-        <div className="absolute bottom-10 left-20
-          w-72 h-72 rounded-full
-          bg-purple-600/20 blur-[100px]" />
+        <div
+          className="
+            absolute bottom-10 left-20
+            w-72 h-72
+            rounded-full
+            bg-purple-600/20
+            blur-[100px]
+          "
+        />
 
         {/* ================= HERO CONTENT ================= */}
-        <div className="relative z-10 max-w-7xl mx-auto
-          h-full px-6 sm:px-10 lg:px-16
-          flex items-center">
 
+        <div
+          className="
+            relative z-10
+            max-w-7xl mx-auto
+            h-full
+            px-6 sm:px-10 lg:px-16
+            flex items-center
+          "
+        >
           <div className="max-w-2xl pt-12">
 
             <motion.div
@@ -103,11 +142,20 @@ export default function Home() {
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2
-                px-4 py-2 rounded-full
-                bg-gradient-to-r from-purple-600 to-pink-500
-                text-white text-xs font-bold uppercase tracking-widest
-                shadow-lg"
+              className="
+                inline-flex items-center gap-2
+                px-4 py-2
+                rounded-full
+                bg-gradient-to-r
+                from-purple-600
+                to-pink-500
+                text-white
+                text-xs
+                font-bold
+                uppercase
+                tracking-widest
+                shadow-lg
+              "
             >
               <Sparkles className="w-4 h-4" />
               New Collection
@@ -117,19 +165,36 @@ export default function Home() {
               key={`title-${currentSlide}`}
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1, duration: 0.7 }}
-              className="mt-6 text-5xl sm:text-6xl lg:text-7xl
-                font-black text-white leading-[0.95]
-                drop-shadow-2xl"
+              transition={{
+                delay: 0.1,
+                duration: 0.7
+              }}
+              className="
+                mt-6
+                text-5xl
+                sm:text-6xl
+                lg:text-7xl
+                font-black
+                text-white
+                leading-[0.95]
+                drop-shadow-2xl
+              "
             >
               Curiosities
               <br />
               For The
               <br />
 
-              <span className="bg-gradient-to-r
-                from-purple-300 via-fuchsia-300 to-pink-300
-                bg-clip-text text-transparent">
+              <span
+                className="
+                  bg-gradient-to-r
+                  from-purple-300
+                  via-fuchsia-300
+                  to-pink-300
+                  bg-clip-text
+                  text-transparent
+                "
+              >
                 Discerning
               </span>
             </motion.h1>
@@ -138,9 +203,18 @@ export default function Home() {
               key={`para-${currentSlide}`}
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.7 }}
-              className="mt-6 max-w-xl text-sm sm:text-base
-                text-white/85 leading-relaxed"
+              transition={{
+                delay: 0.2,
+                duration: 0.7
+              }}
+              className="
+                mt-6
+                max-w-xl
+                text-sm
+                sm:text-base
+                text-white/85
+                leading-relaxed
+              "
             >
               Explore a curated world of antique decor,
               artisanal gifts, unique stationery, and elegant
@@ -153,14 +227,24 @@ export default function Home() {
               transition={{ delay: 0.3 }}
               className="flex flex-wrap gap-3 mt-8"
             >
+
               <Link
                 to="/shop"
-                className="flex items-center gap-2
-                  px-7 py-3.5 rounded-full
-                  bg-gradient-to-r from-purple-600 to-fuchsia-500
-                  text-white text-sm font-bold
-                  shadow-xl shadow-purple-900/40
-                  hover:scale-105 transition-transform"
+                className="
+                  flex items-center gap-2
+                  px-7 py-3.5
+                  rounded-full
+                  bg-gradient-to-r
+                  from-purple-600
+                  to-fuchsia-500
+                  text-white
+                  text-sm
+                  font-bold
+                  shadow-xl
+                  shadow-purple-900/40
+                  hover:scale-105
+                  transition-transform
+                "
               >
                 Shop Collection
                 <ArrowRight className="w-4 h-4" />
@@ -168,84 +252,155 @@ export default function Home() {
 
               <Link
                 to="/about"
-                className="px-7 py-3.5 rounded-full
-                  bg-white/10 backdrop-blur-md
+                className="
+                  px-7 py-3.5
+                  rounded-full
+                  bg-white/10
+                  backdrop-blur-md
                   border border-white/40
-                  text-white text-sm font-bold
-                  hover:bg-white hover:text-purple-900
-                  transition-all"
+                  text-white
+                  text-sm
+                  font-bold
+                  hover:bg-white
+                  hover:text-purple-900
+                  transition-all
+                "
               >
                 Explore More
               </Link>
+
             </motion.div>
 
           </div>
         </div>
 
         {/* ================= SLIDER ARROWS ================= */}
+
         <button
           onClick={previousSlide}
-          className="absolute left-4 sm:left-7 top-1/2
-            -translate-y-1/2 w-11 h-11 rounded-full
-            bg-black/30 backdrop-blur-md
+          className="
+            absolute
+            left-4 sm:left-7
+            top-1/2
+            -translate-y-1/2
+            w-11 h-11
+            rounded-full
+            bg-black/30
+            backdrop-blur-md
             border border-white/25
-            text-white flex items-center justify-center
-            hover:bg-purple-600 transition-all"
+            text-white
+            flex items-center justify-center
+            hover:bg-purple-600
+            transition-all
+          "
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
 
         <button
           onClick={nextSlide}
-          className="absolute right-4 sm:right-7 top-1/2
-            -translate-y-1/2 w-11 h-11 rounded-full
-            bg-black/30 backdrop-blur-md
+          className="
+            absolute
+            right-4 sm:right-7
+            top-1/2
+            -translate-y-1/2
+            w-11 h-11
+            rounded-full
+            bg-black/30
+            backdrop-blur-md
             border border-white/25
-            text-white flex items-center justify-center
-            hover:bg-purple-600 transition-all"
+            text-white
+            flex items-center justify-center
+            hover:bg-purple-600
+            transition-all
+          "
         >
           <ChevronRight className="w-5 h-5" />
         </button>
 
         {/* ================= DOTS ================= */}
-        <div className="absolute bottom-7 left-1/2
-          -translate-x-1/2 flex items-center gap-2">
 
+        <div
+          className="
+            absolute
+            bottom-7
+            left-1/2
+            -translate-x-1/2
+            flex items-center gap-2
+          "
+        >
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`transition-all rounded-full ${
-                currentSlide === index
-                  ? 'w-8 h-2 bg-purple-500'
-                  : 'w-2 h-2 bg-white/70'
-              }`}
+              aria-label={`Go to slide ${index + 1}`}
+              className={`
+                transition-all
+                rounded-full
+                ${
+                  currentSlide === index
+                    ? 'w-8 h-2 bg-purple-500'
+                    : 'w-2 h-2 bg-white/70'
+                }
+              `}
             />
           ))}
-
         </div>
 
       </section>
 
-
       {/* ================= CATEGORY ================= */}
-      <section className="relative max-w-7xl mx-auto
-        px-4 sm:px-6 lg:px-8 py-20">
+
+      <section
+        className="
+          relative
+          max-w-7xl
+          mx-auto
+          px-4 sm:px-6 lg:px-8
+          py-20
+        "
+      >
 
         <div className="text-center mb-10">
 
-          <div className="flex items-center justify-center gap-2
-            text-purple-600 text-xs font-black uppercase tracking-[0.25em]">
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-2
+              text-purple-600
+              text-xs
+              font-black
+              uppercase
+              tracking-[0.25em]
+            "
+          >
             <Sparkles className="w-4 h-4" />
             Shop By Category
           </div>
 
-          <h2 className="mt-3 text-3xl sm:text-4xl
-            font-black text-slate-900">
+          <h2
+            className="
+              mt-3
+              text-3xl
+              sm:text-4xl
+              font-black
+              text-slate-900
+            "
+          >
             Discover{' '}
-            <span className="bg-gradient-to-r
-              from-purple-600 via-fuchsia-500 to-pink-500
-              bg-clip-text text-transparent">
+
+            <span
+              className="
+                bg-gradient-to-r
+                from-purple-600
+                via-fuchsia-500
+                to-pink-500
+                bg-clip-text
+                text-transparent
+              "
+            >
               Something Special
             </span>
           </h2>
@@ -257,8 +412,15 @@ export default function Home() {
 
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2
-          lg:grid-cols-4 gap-5">
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-4
+            gap-5
+          "
+        >
 
           <CategoryCard
             title="Ladies Bags"
@@ -289,35 +451,63 @@ export default function Home() {
           />
 
         </div>
+
       </section>
 
-
       {/* ================= TRENDING ================= */}
-      <section className="max-w-7xl mx-auto
-        px-4 sm:px-6 lg:px-8 pb-20">
+
+      <section
+        className="
+          max-w-7xl
+          mx-auto
+          px-4 sm:px-6 lg:px-8
+          pb-20
+        "
+      >
 
         <div className="flex items-end justify-between mb-7">
 
           <div>
-            <div className="text-xs font-bold text-purple-600
-              uppercase tracking-widest">
+
+            <div
+              className="
+                text-xs
+                font-bold
+                text-purple-600
+                uppercase
+                tracking-widest
+              "
+            >
               ✦ Popular Right Now
             </div>
 
-            <h2 className="mt-1 text-3xl font-black text-slate-900">
+            <h2
+              className="
+                mt-1
+                text-3xl
+                font-black
+                text-slate-900
+              "
+            >
               Trending Drops
             </h2>
 
             <p className="text-sm text-slate-500 mt-1">
               Best-selling pieces of the week
             </p>
+
           </div>
 
           <Link
             to="/shop"
-            className="flex items-center gap-1
-              text-sm font-bold text-purple-700
-              hover:text-pink-500 transition"
+            className="
+              flex items-center gap-1
+              text-sm
+              font-bold
+              text-purple-700
+              hover:text-pink-500
+              transition
+            "
           >
             View All
             <ArrowRight className="w-4 h-4" />
@@ -325,17 +515,42 @@ export default function Home() {
 
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4
-          gap-4 sm:gap-6">
+        {trendingProducts.length > 0 ? (
 
-          {trendingProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
-          ))}
+          <div
+            className="
+              grid
+              grid-cols-2
+              md:grid-cols-4
+              gap-4
+              sm:gap-6
+            "
+          >
+            {trendingProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+              />
+            ))}
+          </div>
 
-        </div>
+        ) : (
+
+          <div
+            className="
+              text-center
+              py-12
+              rounded-3xl
+              bg-white/60
+              border border-purple-100
+            "
+          >
+            <p className="text-sm text-gray-500">
+              New products will appear here.
+            </p>
+          </div>
+
+        )}
 
       </section>
 
@@ -346,34 +561,66 @@ export default function Home() {
 
 /* ================= CATEGORY CARD ================= */
 
-function CategoryCard({ title, subtitle, image, link }) {
+function CategoryCard({
+  title,
+  subtitle,
+  image,
+  link
+}) {
   return (
     <Link
       to={link}
-      className="group relative h-72 rounded-3xl
-        overflow-hidden bg-white
+      className="
+        group
+        relative
+        h-72
+        rounded-3xl
+        overflow-hidden
+        bg-white
         border border-purple-100
         shadow-[0_8px_30px_rgba(90,40,130,0.10)]
         hover:-translate-y-2
-        transition-all duration-500"
+        transition-all
+        duration-500
+      "
     >
 
       <img
         src={image}
         alt={title}
-        className="absolute inset-0 w-full h-full
+        className="
+          absolute
+          inset-0
+          w-full
+          h-full
           object-cover
           group-hover:scale-110
-          transition-transform duration-700"
+          transition-transform
+          duration-700
+        "
       />
 
-      <div className="absolute inset-0
-        bg-gradient-to-t
-        from-purple-950/90
-        via-purple-900/20
-        to-transparent" />
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-t
+          from-purple-950/90
+          via-purple-900/20
+          to-transparent
+        "
+      />
 
-      <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+      <div
+        className="
+          absolute
+          bottom-0
+          left-0
+          right-0
+          p-5
+          text-white
+        "
+      >
 
         <h3 className="text-xl font-black">
           {title}
@@ -383,18 +630,24 @@ function CategoryCard({ title, subtitle, image, link }) {
           {subtitle}
         </p>
 
-        <div className="mt-4 w-9 h-9 rounded-full
-          bg-white/15 backdrop-blur-md
-          border border-white/40
-          flex items-center justify-center
-          group-hover:bg-purple-500
-          transition-colors">
-
+        <div
+          className="
+            mt-4
+            w-9 h-9
+            rounded-full
+            bg-white/15
+            backdrop-blur-md
+            border border-white/40
+            flex items-center justify-center
+            group-hover:bg-purple-500
+            transition-colors
+          "
+        >
           <ArrowRight className="w-4 h-4" />
-
         </div>
 
       </div>
+
     </Link>
   );
 }
