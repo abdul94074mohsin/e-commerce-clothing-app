@@ -1,7 +1,22 @@
 @import "tailwindcss";
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-gray-50 text-gray-900 antialiased font-sans;
+    margin: 0;
+    padding: 0;
+    @apply bg-slate-50 text-gray-900 antialiased font-sans;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: #9333ea;
+    color: white;
   }
 }

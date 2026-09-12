@@ -1,97 +1,478 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingBag, Search, Menu, X, User } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import {
+  PlusCircle,
+  LogIn,
+  LogOut,
+  User,
+  Menu,
+  X,
+  ShoppingBag
+} from 'lucide-react';
 
 export default function Navbar() {
-  const { totalCount } = useCart();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
+  const { user, isAuthenticated, isAdmin, logout } = useAuth();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/shop?search=${encodeURIComponent(searchQuery)}`);
-    }
+  const closeMenu = () => {
+    setMobileMenuOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300">
-      {/* Top Banner with Sky Blue Accent */}
-      <div className="bg-sky-500 text-white text-[11px] sm:text-xs text-center py-1.5 font-bold tracking-wider">
-        🎉 GRAND OPENING OFFER! | USE CODE: <span className="text-yellow-300 font-extrabold">PURPLE10</span>
-      </div>
+    <header className="fixed top-3 left-0 right-0 z-50 px-3 sm:px-5">
+      <div className="max-w-7xl mx-auto">
 
-      {/* Glassmorphism Navbar */}
-      <nav className="py-3.5 backdrop-blur-md bg-sky-200/20 border-b border-sky-300/30 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
-            
-            {/* Brand Logo */}
-            <Link to="/" className="text-2xl font-black tracking-widest uppercase text-slate-900 drop-shadow-sm flex items-center gap-1">
-              <span className="text-purple-900">PURPLE</span><span className="text-purple-600">GALLERY</span>
+        {/* ================= MAIN NAVBAR ================= */}
+        <div
+          className="
+            h-14 sm:h-16
+            flex items-center justify-between
+            px-3 sm:px-5
+            rounded-2xl
+            bg-white/55
+            backdrop-blur-xl
+            border border-white/70
+            shadow-lg shadow-purple-900/10
+          "
+        >
+
+          {/* ================= LOGO ================= */}
+          <Link
+            to="/"
+            onClick={closeMenu}
+            className="flex items-center gap-1.5 sm:gap-2 shrink-0"
+          >
+            {/* PG HEART LOGO */}
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center">
+
+              <div
+                className="
+                  absolute
+                  w-7 h-7 sm:w-8 sm:h-8
+                  rotate-45
+                  rounded-[7px]
+                  bg-purple-800
+                  border border-yellow-400
+                  shadow-sm
+                "
+              />
+
+              <div
+                className="
+                  relative z-10
+                  w-7 h-7 sm:w-8 sm:h-8
+                  rounded-full
+                  bg-purple-950
+                  border-2 border-yellow-400
+                  flex items-center justify-center
+                "
+              >
+                <span className="text-[9px] sm:text-[10px] font-black text-yellow-300">
+                  PG
+                </span>
+              </div>
+            </div>
+
+            {/* BRAND NAME */}
+            <div className="leading-none">
+              <div className="text-base sm:text-xl font-black tracking-tight text-purple-950">
+                Purple <span className="text-purple-700">Gallery</span>
+              </div>
+
+              <div className="text-[6px] sm:text-[7px] text-yellow-700 font-semibold text-center mt-1">
+                The Antique Shop
+              </div>
+            </div>
+          </Link>
+
+
+          {/* ================= DESKTOP NAVIGATION ================= */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+
+            <Link
+              to="/"
+              className="text-sm font-semibold text-purple-700 hover:text-fuchsia-600 transition-colors"
+            >
+              Home
             </Link>
 
-            {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center gap-8 font-black text-xs uppercase tracking-widest text-slate-900">
-              <Link to="/" className="hover:text-purple-700 transition-colors">Home</Link>
-              <Link to="/shop?category=Gifts" className="hover:text-purple-700 transition-colors">Gifts</Link>
-              <Link to="/shop?category=Jewellery" className="hover:text-purple-700 transition-colors">Jewellery</Link>
-              <Link to="/shop?category=Fancy Items" className="hover:text-purple-700 transition-colors">Fancy Items</Link>
-              <Link to="/about" className="hover:text-purple-700 transition-colors">About</Link>
-              <Link to="/contact" className="hover:text-purple-700 transition-colors">Contact</Link>
-            </div>
+            <Link
+              to="/shop"
+              className="text-sm font-semibold text-gray-700 hover:text-purple-700 transition-colors"
+            >
+              Shop
+            </Link>
 
-            {/* Search Input Bar */}
-            <form onSubmit={handleSearch} className="hidden sm:flex flex-1 max-w-xs relative">
-              <input
-                type="text"
-                placeholder="Search items..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white/60 backdrop-blur-md border border-sky-200/80 text-xs font-semibold rounded-full py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white/90 transition-all text-slate-900 placeholder-slate-600"
-              />
-              <button type="submit" className="absolute right-3 top-2.5 text-slate-700 hover:text-black">
-                <Search className="w-4 h-4" />
-              </button>
-            </form>
+            <Link
+              to="/about"
+              className="text-sm font-semibold text-gray-700 hover:text-purple-700 transition-colors"
+            >
+              About
+            </Link>
 
-            {/* Icons */}
-            <div className="flex items-center gap-4">
-              <button className="text-slate-900 hover:text-purple-700 p-1.5 rounded-full hover:bg-sky-200/40 transition-colors">
-                <User className="w-5 h-5" />
-              </button>
+            <Link
+              to="/contact"
+              className="text-sm font-semibold text-gray-700 hover:text-purple-700 transition-colors"
+            >
+              Contact
+            </Link>
 
-              <Link to="/cart" className="relative text-slate-900 hover:text-purple-700 p-1.5 rounded-full hover:bg-sky-200/40 transition-colors">
-                <ShoppingBag className="w-5 h-5" />
-                {totalCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-purple-700 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center animate-pulse shadow-md">
-                    {totalCount}
-                  </span>
-                )}
-              </Link>
+          </nav>
 
-              <button 
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-                className="md:hidden text-slate-900 p-1.5"
+
+          {/* ================= DESKTOP ACTIONS ================= */}
+          <div className="hidden lg:flex items-center gap-2">
+
+            {/* CART */}
+            <Link
+              to="/cart"
+              className="
+                relative
+                w-9 h-9
+                rounded-full
+                bg-white/40
+                backdrop-blur-md
+                border border-white/70
+                flex items-center justify-center
+                text-purple-950
+                hover:bg-white/70
+                transition
+              "
+            >
+              <ShoppingBag className="w-4.5 h-4.5" />
+
+              <span
+                className="
+                  absolute -top-1 -right-1
+                  w-4 h-4
+                  rounded-full
+                  bg-pink-500
+                  text-white
+                  text-[8px]
+                  flex items-center justify-center
+                  font-bold
+                "
               >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
+                0
+              </span>
+            </Link>
+
+
+            {/* ADMIN ADD PRODUCT */}
+            {isAdmin && (
+              <Link
+                to="/admin/add-product"
+                className="
+                  flex items-center gap-1.5
+                  bg-gradient-to-r from-purple-600 to-fuchsia-600
+                  text-white
+                  px-3.5 py-2
+                  rounded-full
+                  text-xs
+                  font-bold
+                  shadow-md shadow-purple-500/20
+                  hover:scale-[1.03]
+                  transition-transform
+                "
+              >
+                <PlusCircle className="w-4 h-4" />
+                Add Product
+              </Link>
+            )}
+
+
+            {/* LOGGED IN USER */}
+            {isAuthenticated ? (
+              <div className="flex items-center gap-2 ml-1">
+
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-purple-950">
+                  <User className="w-4 h-4" />
+                  <span>{user?.name}</span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={logout}
+                  className="
+                    p-2
+                    rounded-full
+                    text-gray-500
+                    hover:text-red-600
+                    hover:bg-white/60
+                    transition
+                  "
+                  title="Logout"
+                >
+                  <LogOut className="w-4.5 h-4.5" />
+                </button>
+
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="
+                  flex items-center gap-1.5
+                  bg-white/40
+                  backdrop-blur-md
+                  border border-purple-300/70
+                  text-purple-800
+                  px-3.5 py-2
+                  rounded-full
+                  text-xs
+                  font-bold
+                  hover:bg-purple-700
+                  hover:text-white
+                  transition
+                "
+              >
+                <LogIn className="w-4 h-4" />
+                Login
+              </Link>
+            )}
+
           </div>
+
+
+          {/* ================= MOBILE ACTIONS ================= */}
+          <div className="flex lg:hidden items-center gap-1.5">
+
+            {/* MOBILE CART */}
+            <Link
+              to="/cart"
+              onClick={closeMenu}
+              className="
+                relative
+                w-9 h-9
+                rounded-xl
+                bg-white/40
+                backdrop-blur-md
+                border border-white/70
+                flex items-center justify-center
+                text-purple-950
+                shadow-sm
+              "
+            >
+              <ShoppingBag className="w-4.5 h-4.5" />
+
+              <span
+                className="
+                  absolute -top-1 -right-1
+                  w-4 h-4
+                  rounded-full
+                  bg-pink-500
+                  text-white
+                  text-[8px]
+                  flex items-center justify-center
+                  font-bold
+                "
+              >
+                0
+              </span>
+            </Link>
+
+
+            {/* MOBILE HAMBURGER - LIGHT GLASS */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+              className="
+                w-9 h-9
+                rounded-xl
+                bg-white/45
+                backdrop-blur-md
+                border border-white/80
+                text-purple-950
+                flex items-center justify-center
+                shadow-sm
+                hover:bg-white/70
+                active:scale-95
+                transition-all
+                cursor-pointer
+              "
+            >
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
+            </button>
+
+          </div>
+
         </div>
 
-        {/* Mobile Dropdown */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-sky-100/95 backdrop-blur-2xl border-b border-sky-200 px-6 pt-4 pb-6 space-y-4 font-black text-xs uppercase tracking-wider text-slate-900 mt-2 shadow-2xl">
-            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 hover:text-purple-600">Home</Link>
-            <Link to="/shop" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 hover:text-purple-600">Shop All</Link>
-            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 hover:text-purple-600">About Us</Link>
-            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 hover:text-purple-600">Contact</Link>
+
+        {/* ================= MOBILE MENU ================= */}
+        {mobileMenuOpen && (
+          <div
+            className="
+              lg:hidden
+              mt-2
+              rounded-2xl
+              bg-white/80
+              backdrop-blur-2xl
+              border border-white/80
+              shadow-xl shadow-purple-900/10
+              overflow-hidden
+            "
+          >
+
+            <nav className="p-2.5">
+
+              {/* HOME */}
+              <Link
+                to="/"
+                onClick={closeMenu}
+                className="
+                  block
+                  px-4 py-3
+                  rounded-xl
+                  text-sm
+                  font-semibold
+                  text-purple-950
+                  hover:bg-purple-100/60
+                  transition
+                "
+              >
+                Home
+              </Link>
+
+
+              {/* SHOP */}
+              <Link
+                to="/shop"
+                onClick={closeMenu}
+                className="
+                  block
+                  px-4 py-3
+                  rounded-xl
+                  text-sm
+                  font-semibold
+                  text-gray-700
+                  hover:bg-purple-100/60
+                  transition
+                "
+              >
+                Shop
+              </Link>
+
+
+              {/* ABOUT */}
+              <Link
+                to="/about"
+                onClick={closeMenu}
+                className="
+                  block
+                  px-4 py-3
+                  rounded-xl
+                  text-sm
+                  font-semibold
+                  text-gray-700
+                  hover:bg-purple-100/60
+                  transition
+                "
+              >
+                About
+              </Link>
+
+
+              {/* CONTACT */}
+              <Link
+                to="/contact"
+                onClick={closeMenu}
+                className="
+                  block
+                  px-4 py-3
+                  rounded-xl
+                  text-sm
+                  font-semibold
+                  text-gray-700
+                  hover:bg-purple-100/60
+                  transition
+                "
+              >
+                Contact
+              </Link>
+
+
+              {/* ADMIN */}
+              {isAdmin && (
+                <Link
+                  to="/admin/add-product"
+                  onClick={closeMenu}
+                  className="
+                    mt-2
+                    flex items-center gap-2
+                    px-4 py-3
+                    rounded-xl
+                    bg-gradient-to-r from-purple-600 to-fuchsia-600
+                    text-white
+                    text-sm
+                    font-bold
+                  "
+                >
+                  <PlusCircle className="w-5 h-5" />
+                  Add Product
+                </Link>
+              )}
+
+
+              {/* LOGIN */}
+              {!isAuthenticated && (
+                <Link
+                  to="/login"
+                  onClick={closeMenu}
+                  className="
+                    mt-2
+                    flex items-center gap-2
+                    px-4 py-3
+                    rounded-xl
+                    bg-white/60
+                    border border-purple-300
+                    text-purple-800
+                    text-sm
+                    font-bold
+                  "
+                >
+                  <LogIn className="w-5 h-5" />
+                  Login
+                </Link>
+              )}
+
+
+              {/* LOGOUT */}
+              {isAuthenticated && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    logout();
+                    closeMenu();
+                  }}
+                  className="
+                    mt-2
+                    w-full
+                    flex items-center gap-2
+                    px-4 py-3
+                    rounded-xl
+                    text-red-600
+                    hover:bg-red-50
+                    text-sm
+                    font-bold
+                    text-left
+                  "
+                >
+                  <LogOut className="w-5 h-5" />
+                  Logout
+                </button>
+              )}
+
+            </nav>
           </div>
         )}
-      </nav>
+
+      </div>
     </header>
   );
 }
