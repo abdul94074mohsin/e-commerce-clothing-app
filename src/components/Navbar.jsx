@@ -30,7 +30,7 @@ export default function Navbar() {
             flex items-center justify-between
             px-3 sm:px-5
             rounded-2xl
-            bg-white/70
+            bg-white/75
             backdrop-blur-xl
             border border-white/80
             shadow-lg shadow-purple-900/10
@@ -43,16 +43,28 @@ export default function Navbar() {
             onClick={closeMenu}
             className="flex items-center shrink-0"
           >
-            <img
-              src="/purple.jpg"
-              alt="Purple Gallery"
+            <div
               className="
-                h-11 sm:h-12
-                w-auto
-                max-w-[190px]
-                object-contain
+                h-12 sm:h-13
+                w-32 sm:w-36
+                flex items-center justify-center
+                overflow-hidden
+                rounded-xl
+                bg-white/45
               "
-            />
+            >
+              <img
+                src="/purple.jpg"
+                alt="Purple Gallery"
+                className="
+                  h-full
+                  w-full
+                  object-contain
+                  mix-blend-multiply
+                  opacity-90
+                "
+              />
+            </div>
           </Link>
 
 
@@ -93,19 +105,18 @@ export default function Navbar() {
           {/* DESKTOP ACTIONS */}
           <div className="hidden lg:flex items-center gap-2">
 
-            {/* CART */}
             <Link
               to="/cart"
               className="
                 relative
                 w-9 h-9
                 rounded-full
-                bg-white/50
+                bg-white/55
                 backdrop-blur-md
                 border border-white/80
                 flex items-center justify-center
                 text-purple-950
-                hover:bg-white/80
+                hover:bg-white/90
                 transition
               "
             >
@@ -128,7 +139,6 @@ export default function Navbar() {
             </Link>
 
 
-            {/* ADMIN ADD PRODUCT */}
             {isAdmin && (
               <Link
                 to="/admin/add-product"
@@ -151,7 +161,6 @@ export default function Navbar() {
             )}
 
 
-            {/* LOGGED IN USER */}
             {isAuthenticated ? (
               <div className="flex items-center gap-2 ml-1">
 
@@ -164,8 +173,7 @@ export default function Navbar() {
                   type="button"
                   onClick={logout}
                   className="
-                    p-2
-                    rounded-full
+                    p-2 rounded-full
                     text-gray-500
                     hover:text-red-600
                     hover:bg-white/60
@@ -182,7 +190,7 @@ export default function Navbar() {
                 to="/login"
                 className="
                   flex items-center gap-1.5
-                  bg-white/50
+                  bg-white/55
                   backdrop-blur-md
                   border border-purple-300/70
                   text-purple-800
@@ -206,7 +214,6 @@ export default function Navbar() {
           {/* MOBILE ACTIONS */}
           <div className="flex lg:hidden items-center gap-1.5">
 
-            {/* MOBILE CART */}
             <Link
               to="/cart"
               onClick={closeMenu}
@@ -214,7 +221,7 @@ export default function Navbar() {
                 relative
                 w-9 h-9
                 rounded-xl
-                bg-white/50
+                bg-white/55
                 backdrop-blur-md
                 border border-white/80
                 flex items-center justify-center
@@ -241,7 +248,6 @@ export default function Navbar() {
             </Link>
 
 
-            {/* MOBILE MENU BUTTON */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -249,7 +255,7 @@ export default function Navbar() {
               className="
                 w-9 h-9
                 rounded-xl
-                bg-white/50
+                bg-white/55
                 backdrop-blur-md
                 border border-white/80
                 text-purple-950
@@ -339,7 +345,6 @@ export default function Navbar() {
               </Link>
 
 
-              {/* ADMIN */}
               {isAdmin && (
                 <Link
                   to="/admin/add-product"
@@ -357,7 +362,6 @@ export default function Navbar() {
               )}
 
 
-              {/* LOGIN */}
               {!isAuthenticated && (
                 <Link
                   to="/login"
@@ -375,7 +379,6 @@ export default function Navbar() {
               )}
 
 
-              {/* LOGOUT */}
               {isAuthenticated && (
                 <button
                   type="button"
