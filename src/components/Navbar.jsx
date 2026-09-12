@@ -30,9 +30,9 @@ export default function Navbar() {
             flex items-center justify-between
             px-3 sm:px-5
             rounded-2xl
-            bg-white/55
+            bg-white/70
             backdrop-blur-xl
-            border border-white/70
+            border border-white/80
             shadow-lg shadow-purple-900/10
           "
         >
@@ -41,18 +41,49 @@ export default function Navbar() {
           <Link
             to="/"
             onClick={closeMenu}
-            className="flex items-center shrink-0"
+            className="flex items-center gap-2 sm:gap-2.5 shrink-0"
           >
-            <img
-              src="/purple gallery.jpg"
-              alt="Purple Gallery"
+
+            {/* REAL PURPLE GALLERY LOGO */}
+            <div
               className="
-                h-11 sm:h-12
-                w-auto
-                max-w-[210px]
-                object-contain
+                relative
+                w-11 h-11
+                sm:w-12 sm:h-12
+                rounded-full
+                overflow-hidden
+                bg-purple-950
+                border-2 border-yellow-500
+                shadow-md shadow-purple-900/20
+                shrink-0
               "
-            />
+            >
+              <img
+                src="/purple gallery.jpg"
+                alt="Purple Gallery Logo"
+                className="
+                  absolute
+                  inset-0
+                  w-full
+                  h-full
+                  object-cover
+                  object-center
+                  scale-[1.65]
+                "
+              />
+            </div>
+
+            {/* BRAND NAME */}
+            <div className="leading-none">
+              <div className="text-base sm:text-xl font-black tracking-tight text-purple-950 whitespace-nowrap">
+                Purple <span className="text-purple-700">Gallery</span>
+              </div>
+
+              <div className="text-[6px] sm:text-[7px] text-yellow-700 font-semibold text-center mt-1">
+                The Antique Shop
+              </div>
+            </div>
+
           </Link>
 
 
@@ -100,12 +131,12 @@ export default function Navbar() {
                 relative
                 w-9 h-9
                 rounded-full
-                bg-white/40
+                bg-white/50
                 backdrop-blur-md
-                border border-white/70
+                border border-white/80
                 flex items-center justify-center
                 text-purple-950
-                hover:bg-white/70
+                hover:bg-white/80
                 transition
               "
             >
@@ -182,7 +213,7 @@ export default function Navbar() {
                 to="/login"
                 className="
                   flex items-center gap-1.5
-                  bg-white/40
+                  bg-white/50
                   backdrop-blur-md
                   border border-purple-300/70
                   text-purple-800
@@ -214,9 +245,9 @@ export default function Navbar() {
                 relative
                 w-9 h-9
                 rounded-xl
-                bg-white/40
+                bg-white/50
                 backdrop-blur-md
-                border border-white/70
+                border border-white/80
                 flex items-center justify-center
                 text-purple-950
                 shadow-sm
@@ -249,13 +280,13 @@ export default function Navbar() {
               className="
                 w-9 h-9
                 rounded-xl
-                bg-white/45
+                bg-white/50
                 backdrop-blur-md
                 border border-white/80
                 text-purple-950
                 flex items-center justify-center
                 shadow-sm
-                hover:bg-white/70
+                hover:bg-white/80
                 active:scale-95
                 transition-all
                 cursor-pointer
@@ -280,7 +311,7 @@ export default function Navbar() {
               lg:hidden
               mt-2
               rounded-2xl
-              bg-white/80
+              bg-white/85
               backdrop-blur-2xl
               border border-white/80
               shadow-xl shadow-purple-900/10
@@ -290,96 +321,63 @@ export default function Navbar() {
 
             <nav className="p-2.5">
 
-              {/* HOME */}
               <Link
                 to="/"
                 onClick={closeMenu}
                 className="
-                  block
-                  px-4 py-3
-                  rounded-xl
-                  text-sm
-                  font-semibold
-                  text-purple-950
-                  hover:bg-purple-100/60
-                  transition
+                  block px-4 py-3 rounded-xl
+                  text-sm font-semibold text-purple-950
+                  hover:bg-purple-100/60 transition
                 "
               >
                 Home
               </Link>
 
-
-              {/* SHOP */}
               <Link
                 to="/shop"
                 onClick={closeMenu}
                 className="
-                  block
-                  px-4 py-3
-                  rounded-xl
-                  text-sm
-                  font-semibold
-                  text-gray-700
-                  hover:bg-purple-100/60
-                  transition
+                  block px-4 py-3 rounded-xl
+                  text-sm font-semibold text-gray-700
+                  hover:bg-purple-100/60 transition
                 "
               >
                 Shop
               </Link>
 
-
-              {/* ABOUT */}
               <Link
                 to="/about"
                 onClick={closeMenu}
                 className="
-                  block
-                  px-4 py-3
-                  rounded-xl
-                  text-sm
-                  font-semibold
-                  text-gray-700
-                  hover:bg-purple-100/60
-                  transition
+                  block px-4 py-3 rounded-xl
+                  text-sm font-semibold text-gray-700
+                  hover:bg-purple-100/60 transition
                 "
               >
                 About
               </Link>
 
-
-              {/* CONTACT */}
               <Link
                 to="/contact"
                 onClick={closeMenu}
                 className="
-                  block
-                  px-4 py-3
-                  rounded-xl
-                  text-sm
-                  font-semibold
-                  text-gray-700
-                  hover:bg-purple-100/60
-                  transition
+                  block px-4 py-3 rounded-xl
+                  text-sm font-semibold text-gray-700
+                  hover:bg-purple-100/60 transition
                 "
               >
                 Contact
               </Link>
 
-
-              {/* ADMIN */}
               {isAdmin && (
                 <Link
                   to="/admin/add-product"
                   onClick={closeMenu}
                   className="
-                    mt-2
-                    flex items-center gap-2
-                    px-4 py-3
-                    rounded-xl
+                    mt-2 flex items-center gap-2
+                    px-4 py-3 rounded-xl
                     bg-gradient-to-r from-purple-600 to-fuchsia-600
-                    text-white
-                    text-sm
-                    font-bold
+                    text-white text-sm font-bold
                   "
                 >
                   <PlusCircle className="w-5 h-5" />
@@ -387,22 +385,15 @@ export default function Navbar() {
                 </Link>
               )}
 
-
-              {/* LOGIN */}
               {!isAuthenticated && (
                 <Link
                   to="/login"
                   onClick={closeMenu}
                   className="
-                    mt-2
-                    flex items-center gap-2
-                    px-4 py-3
-                    rounded-xl
-                    bg-white/60
-                    border border-purple-300
-                    text-purple-800
-                    text-sm
-                    font-bold
+                    mt-2 flex items-center gap-2
+                    px-4 py-3 rounded-xl
+                    bg-white/60 border border-purple-300
+                    text-purple-800 text-sm font-bold
                   "
                 >
                   <LogIn className="w-5 h-5" />
@@ -410,8 +401,6 @@ export default function Navbar() {
                 </Link>
               )}
 
-
-              {/* LOGOUT */}
               {isAuthenticated && (
                 <button
                   type="button"
@@ -420,16 +409,10 @@ export default function Navbar() {
                     closeMenu();
                   }}
                   className="
-                    mt-2
-                    w-full
-                    flex items-center gap-2
-                    px-4 py-3
-                    rounded-xl
-                    text-red-600
-                    hover:bg-red-50
-                    text-sm
-                    font-bold
-                    text-left
+                    mt-2 w-full flex items-center gap-2
+                    px-4 py-3 rounded-xl
+                    text-red-600 hover:bg-red-50
+                    text-sm font-bold text-left
                   "
                 >
                   <LogOut className="w-5 h-5" />
