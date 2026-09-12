@@ -45,30 +45,30 @@ export default function Navbar() {
           >
             <div
               className="
-                h-12 sm:h-13
-                w-32 sm:w-36
-                flex items-center justify-center
+                w-11 h-11
+                sm:w-12 sm:h-12
+                rounded-full
                 overflow-hidden
-                rounded-xl
-                bg-white/45
+                flex items-center justify-center
+                bg-white
+                shadow-sm
               "
             >
               <img
                 src="/purple.jpg"
                 alt="Purple Gallery"
                 className="
-                  h-full
                   w-full
-                  object-contain
-                  mix-blend-multiply
-                  opacity-90
+                  h-full
+                  object-cover
+                  object-center
                 "
               />
             </div>
           </Link>
 
 
-          {/* DESKTOP NAVIGATION */}
+          {/* DESKTOP NAV */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
 
             <Link
@@ -139,6 +139,7 @@ export default function Navbar() {
             </Link>
 
 
+            {/* ADMIN */}
             {isAdmin && (
               <Link
                 to="/admin/add-product"
@@ -148,8 +149,7 @@ export default function Navbar() {
                   text-white
                   px-3.5 py-2
                   rounded-full
-                  text-xs
-                  font-bold
+                  text-xs font-bold
                   shadow-md shadow-purple-500/20
                   hover:scale-[1.03]
                   transition-transform
@@ -161,6 +161,7 @@ export default function Navbar() {
             )}
 
 
+            {/* USER / LOGIN */}
             {isAuthenticated ? (
               <div className="flex items-center gap-2 ml-1">
 
@@ -196,8 +197,7 @@ export default function Navbar() {
                   text-purple-800
                   px-3.5 py-2
                   rounded-full
-                  text-xs
-                  font-bold
+                  text-xs font-bold
                   hover:bg-purple-700
                   hover:text-white
                   transition
@@ -248,6 +248,7 @@ export default function Navbar() {
             </Link>
 
 
+            {/* HAMBURGER */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -344,7 +345,6 @@ export default function Navbar() {
                 Contact
               </Link>
 
-
               {isAdmin && (
                 <Link
                   to="/admin/add-product"
@@ -361,7 +361,6 @@ export default function Navbar() {
                 </Link>
               )}
 
-
               {!isAuthenticated && (
                 <Link
                   to="/login"
@@ -377,7 +376,6 @@ export default function Navbar() {
                   Login
                 </Link>
               )}
-
 
               {isAuthenticated && (
                 <button
