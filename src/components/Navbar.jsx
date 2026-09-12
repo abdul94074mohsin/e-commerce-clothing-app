@@ -23,7 +23,7 @@ export default function Navbar() {
     <header className="fixed top-3 left-0 right-0 z-50 px-3 sm:px-5">
       <div className="max-w-7xl mx-auto">
 
-        {/* ================= MAIN NAVBAR ================= */}
+        {/* MAIN NAVBAR */}
         <div
           className="
             h-14 sm:h-16
@@ -37,57 +37,26 @@ export default function Navbar() {
           "
         >
 
-          {/* ================= LOGO ================= */}
+          {/* LOGO */}
           <Link
             to="/"
             onClick={closeMenu}
-            className="flex items-center gap-2 sm:gap-2.5 shrink-0"
+            className="flex items-center shrink-0"
           >
-
-            {/* REAL PURPLE GALLERY LOGO */}
-            <div
+            <img
+              src="/purple.jpg"
+              alt="Purple Gallery"
               className="
-                relative
-                w-11 h-11
-                sm:w-12 sm:h-12
-                rounded-full
-                overflow-hidden
-                bg-purple-950
-                border-2 border-yellow-500
-                shadow-md shadow-purple-900/20
-                shrink-0
+                h-11 sm:h-12
+                w-auto
+                max-w-[190px]
+                object-contain
               "
-            >
-              <img
-                src="/purple gallery.jpg"
-                alt="Purple Gallery Logo"
-                className="
-                  absolute
-                  inset-0
-                  w-full
-                  h-full
-                  object-cover
-                  object-center
-                  scale-[1.65]
-                "
-              />
-            </div>
-
-            {/* BRAND NAME */}
-            <div className="leading-none">
-              <div className="text-base sm:text-xl font-black tracking-tight text-purple-950 whitespace-nowrap">
-                Purple <span className="text-purple-700">Gallery</span>
-              </div>
-
-              <div className="text-[6px] sm:text-[7px] text-yellow-700 font-semibold text-center mt-1">
-                The Antique Shop
-              </div>
-            </div>
-
+            />
           </Link>
 
 
-          {/* ================= DESKTOP NAVIGATION ================= */}
+          {/* DESKTOP NAVIGATION */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
 
             <Link
@@ -121,7 +90,7 @@ export default function Navbar() {
           </nav>
 
 
-          {/* ================= DESKTOP ACTIONS ================= */}
+          {/* DESKTOP ACTIONS */}
           <div className="hidden lg:flex items-center gap-2">
 
             {/* CART */}
@@ -234,7 +203,7 @@ export default function Navbar() {
           </div>
 
 
-          {/* ================= MOBILE ACTIONS ================= */}
+          {/* MOBILE ACTIONS */}
           <div className="flex lg:hidden items-center gap-1.5">
 
             {/* MOBILE CART */}
@@ -272,7 +241,7 @@ export default function Navbar() {
             </Link>
 
 
-            {/* MOBILE HAMBURGER */}
+            {/* MOBILE MENU BUTTON */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -304,7 +273,7 @@ export default function Navbar() {
         </div>
 
 
-        {/* ================= MOBILE MENU ================= */}
+        {/* MOBILE MENU */}
         {mobileMenuOpen && (
           <div
             className="
@@ -369,6 +338,8 @@ export default function Navbar() {
                 Contact
               </Link>
 
+
+              {/* ADMIN */}
               {isAdmin && (
                 <Link
                   to="/admin/add-product"
@@ -385,6 +356,8 @@ export default function Navbar() {
                 </Link>
               )}
 
+
+              {/* LOGIN */}
               {!isAuthenticated && (
                 <Link
                   to="/login"
@@ -401,6 +374,8 @@ export default function Navbar() {
                 </Link>
               )}
 
+
+              {/* LOGOUT */}
               {isAuthenticated && (
                 <button
                   type="button"
