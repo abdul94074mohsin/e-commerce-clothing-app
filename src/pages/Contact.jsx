@@ -1,15 +1,262 @@
 import React from 'react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  MessageCircle,
+  Send,
+  Instagram
+} from 'lucide-react';
 
 export default function Contact() {
+  const shopEmail = 'your-email@example.com';
+  const shopPhone = '+91 XXXXX XXXXX';
+  const shopLocation = 'Burhanpur, Madhya Pradesh, India';
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Thank you! Your message has been received.');
+  };
+
   return (
-    <div className="max-w-2xl mx-auto px-4 py-16 space-y-6">
-      <h1 className="text-4xl font-black uppercase text-center">Contact Us</h1>
-      <form onSubmit={(e) => { e.preventDefault(); alert('Message sent!'); }} className="space-y-4">
-        <input type="text" placeholder="Your Name" required className="w-full border p-3 rounded-lg" />
-        <input type="email" placeholder="Your Email" required className="w-full border p-3 rounded-lg" />
-        <textarea placeholder="Your Message" rows="5" required className="w-full border p-3 rounded-lg"></textarea>
-        <button type="submit" className="w-full bg-black text-white py-3 font-bold uppercase rounded-lg">Send Message</button>
-      </form>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-fuchsia-50">
+      
+      {/* Main Content
+          Extra top padding keeps everything safely below fixed navbar */}
+      <section className="pt-32 sm:pt-36 pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+
+          {/* Heading */}
+          <div className="text-center mb-10 sm:mb-14">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-700 text-xs sm:text-sm font-bold uppercase tracking-wider">
+              <MessageCircle className="w-4 h-4" />
+              We'd Love To Hear From You
+            </span>
+
+            <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900">
+              Get In{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-fuchsia-500">
+                Touch
+              </span>
+            </h1>
+
+            <p className="mt-4 max-w-2xl mx-auto text-gray-600 text-sm sm:text-base leading-relaxed">
+              Have a question about our products, orders or anything else?
+              Contact Purple Gallery and our team will be happy to help you.
+            </p>
+          </div>
+
+          {/* Main Contact Card */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
+
+            {/* Shop Details */}
+            <div className="lg:col-span-2">
+              <div className="h-full rounded-3xl bg-gradient-to-br from-purple-900 via-purple-800 to-fuchsia-800 p-6 sm:p-8 text-white shadow-xl shadow-purple-900/20 relative overflow-hidden">
+
+                {/* Decorative circles */}
+                <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-white/10" />
+                <div className="absolute -bottom-20 -left-16 w-48 h-48 rounded-full bg-fuchsia-400/10" />
+
+                <div className="relative z-10">
+                  <span className="text-purple-200 text-xs font-bold uppercase tracking-[0.2em]">
+                    Purple Gallery
+                  </span>
+
+                  <h2 className="text-2xl sm:text-3xl font-black mt-3">
+                    Let's Connect
+                  </h2>
+
+                  <p className="mt-3 text-purple-100 text-sm leading-relaxed">
+                    We are here to help you with product information,
+                    orders and customer support.
+                  </p>
+
+                  {/* Contact Items */}
+                  <div className="mt-8 space-y-5">
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-11 h-11 shrink-0 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
+                        <Mail className="w-5 h-5" />
+                      </div>
+
+                      <div>
+                        <p className="text-xs text-purple-200 uppercase font-bold tracking-wider">
+                          Email
+                        </p>
+                        <p className="text-sm font-semibold mt-1 break-all">
+                          {shopEmail}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-11 h-11 shrink-0 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
+                        <Phone className="w-5 h-5" />
+                      </div>
+
+                      <div>
+                        <p className="text-xs text-purple-200 uppercase font-bold tracking-wider">
+                          Phone / WhatsApp
+                        </p>
+                        <p className="text-sm font-semibold mt-1">
+                          {shopPhone}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-11 h-11 shrink-0 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
+                        <MapPin className="w-5 h-5" />
+                      </div>
+
+                      <div>
+                        <p className="text-xs text-purple-200 uppercase font-bold tracking-wider">
+                          Location
+                        </p>
+                        <p className="text-sm font-semibold mt-1">
+                          {shopLocation}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-11 h-11 shrink-0 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
+                        <Clock className="w-5 h-5" />
+                      </div>
+
+                      <div>
+                        <p className="text-xs text-purple-200 uppercase font-bold tracking-wider">
+                          Business Hours
+                        </p>
+                        <p className="text-sm font-semibold mt-1">
+                          Mon - Sat: 10:00 AM - 8:00 PM
+                        </p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  {/* WhatsApp Button */}
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert('Please add your WhatsApp number first.');
+                    }}
+                    className="mt-8 w-full flex items-center justify-center gap-2 bg-white text-purple-800 py-3.5 rounded-xl font-bold text-sm hover:bg-purple-50 transition-all shadow-lg"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    Chat on WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div className="lg:col-span-3">
+              <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-purple-100 shadow-xl shadow-purple-900/5 p-6 sm:p-8 lg:p-10">
+
+                <div className="mb-7">
+                  <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+                    Send Us a Message
+                  </h2>
+
+                  <p className="text-gray-500 text-sm mt-2">
+                    Fill out the form and we'll get back to you soon.
+                  </p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-5">
+
+                  {/* Name + Email */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+                    <div>
+                      <label className="block text-sm font-bold text-slate-800 mb-2">
+                        Your Name
+                      </label>
+
+                      <input
+                        type="text"
+                        required
+                        placeholder="Enter your name"
+                        className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-sm outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-bold text-slate-800 mb-2">
+                        Your Email
+                      </label>
+
+                      <input
+                        type="email"
+                        required
+                        placeholder="Enter your email"
+                        className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-sm outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all"
+                      />
+                    </div>
+
+                  </div>
+
+                  {/* Phone */}
+                  <div>
+                    <label className="block text-sm font-bold text-slate-800 mb-2">
+                      Phone Number
+                    </label>
+
+                    <input
+                      type="tel"
+                      placeholder="Enter your phone number"
+                      className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-sm outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all"
+                    />
+                  </div>
+
+                  {/* Subject */}
+                  <div>
+                    <label className="block text-sm font-bold text-slate-800 mb-2">
+                      Subject
+                    </label>
+
+                    <input
+                      type="text"
+                      required
+                      placeholder="How can we help you?"
+                      className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-sm outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all"
+                    />
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label className="block text-sm font-bold text-slate-800 mb-2">
+                      Your Message
+                    </label>
+
+                    <textarea
+                      required
+                      rows="5"
+                      placeholder="Write your message here..."
+                      className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-sm outline-none resize-none focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all"
+                    />
+                  </div>
+
+                  {/* Submit */}
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-500/20 hover:scale-[1.02] hover:shadow-purple-500/30 transition-all"
+                  >
+                    <Send className="w-4 h-4" />
+                    Send Message
+                  </button>
+
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
