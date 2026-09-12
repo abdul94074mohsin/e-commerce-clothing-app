@@ -11,7 +11,7 @@ export default function ProductDetails() {
 
   const product = products.find((p) => p.id === parseInt(id));
 
-  // Page hamesha top se open ho
+  // Always open product page from top
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
@@ -51,8 +51,9 @@ export default function ProductDetails() {
 
   return (
     <div className="w-full">
+
       {/* Product Details Wrapper */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-12 pb-10 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-10 w-full">
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 items-start">
 
@@ -177,7 +178,7 @@ export default function ProductDetails() {
               </div>
             )}
 
-            {/* Buttons */}
+            {/* Add To Cart & Buy Buttons */}
             <div className="flex sm:flex-row flex-col gap-3 pt-4">
 
               {/* Add To Bag */}
