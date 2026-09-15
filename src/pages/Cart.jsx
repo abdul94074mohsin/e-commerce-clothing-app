@@ -35,7 +35,8 @@ export default function Cart() {
 
   // WhatsApp Checkout
   const handleWhatsAppCheckout = () => {
-    const phoneNumber = '919876543210';
+    // Purple Gallery WhatsApp Number
+    const phoneNumber = '917000275661';
 
     let message = `*NEW ORDER - PURPLE GALLERY*\n\n`;
 
@@ -307,15 +308,17 @@ export default function Cart() {
           "
         >
 
-          <h2 className="
-            text-lg
-            font-black
-            uppercase
-            tracking-wider
-            border-b
-            pb-3
-            text-slate-900
-          ">
+          <h2
+            className="
+              text-lg
+              font-black
+              uppercase
+              tracking-wider
+              border-b
+              pb-3
+              text-slate-900
+            "
+          >
             Order Summary
           </h2>
 
@@ -389,14 +392,16 @@ export default function Cart() {
           )}
 
           {/* TOTAL */}
-          <div className="
-            flex justify-between
-            text-lg
-            font-black
-            border-t
-            pt-3
-            text-slate-900
-          ">
+          <div
+            className="
+              flex justify-between
+              text-lg
+              font-black
+              border-t
+              pt-3
+              text-slate-900
+            "
+          >
             <span>Total Payable</span>
             <span>₹{finalPrice}</span>
           </div>
