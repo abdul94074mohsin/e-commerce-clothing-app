@@ -1,15 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
+import { useProducts } from '../context/ProductContext';
+import ProductCard from '../components/ProductCard';
 import { Star, ShoppingBag, Check } from 'lucide-react';
 
 export default function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { productsList } = useProducts();
 
-  const product = products.find((p) => p.id === parseInt(id));
+  // Get current product from ProductContext
+  const product = productsList.find(
+    (p) => p.id === parseInt(id)
+  );
+
+  // Related products:
+  // Same category + current product ko exclude karo
+  const relatedProducts = product
+    ? productsList
+        .filter(
+          (p) =>
+            p.category === product.category &&
+            p.id !== product.id
+        )
+        .slice(0, 4)
+    : [];
 
   // Always open product page from top
   useEffect(() => {
@@ -26,9 +43,22 @@ export default function ProductDetails() {
 
   const [added, setAdded] = useState(false);
 
+  // Update size/color when product changes
+  useEffect(() => {
+    setSelectedSize(
+      product?.sizes ? product.sizes[0] : ''
+    );
+
+    setSelectedColor(
+      product?.colors ? product.colors[0] : ''
+    );
+
+    setAdded(false);
+  }, [id, product]);
+
   if (!product) {
     return (
-      <div className="text-center py-20 font-bold text-gray-600">
+      <div className="text-center pt-32 pb-20 font-bold text-gray-600">
         Product not found.
       </div>
     );
@@ -52,7 +82,7 @@ export default function ProductDetails() {
   return (
     <div className="w-full">
 
-      {/* Product Details Wrapper */}
+      {/* ================= PRODUCT DETAILS ================= */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-10 w-full">
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 items-start">
@@ -210,6 +240,62 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
+
+      {/* ================= RELATED PRODUCTS ================= */}
+      {relatedProducts.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16">
+
+          {/* Section Heading */}
+          <div className="flex items-end justify-between mb-7">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-purple-600 mb-2">
+                Explore More
+              </p>
+
+              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 uppercase tracking-wide">
+                You May Also Like
+              </h2>
+
+              <p className="text-sm text-gray-500 mt-2">
+                More products from our {product.category} collection.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={() =>
+                navigate(`/shop?category=${encodeURIComponent(product.category)}`)
+              }
+              className="hidden sm:block text-sm font-bold text-purple-700 hover:text-purple-900 transition-colors"
+            >
+              View All →
+            </button>
+          </div>
+
+          {/* Related Product Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {relatedProducts.map((relatedProduct) => (
+              <ProductCard
+                key={relatedProduct.id}
+                product={relatedProduct}
+              />
+            ))}
+          </div>
+
+          {/* Mobile View All */}
+          <button
+            type="button"
+            onClick={() =>
+              navigate(`/shop?category=${encodeURIComponent(product.category)}`)
+            }
+            className="sm:hidden w-full mt-7 border border-purple-200 text-purple-700 py-3 rounded-xl font-bold text-sm hover:bg-purple-50 transition-colors"
+          >
+            View All {product.category}
+          </button>
+
+        </section>
+      )}
+
     </div>
   );
 }
