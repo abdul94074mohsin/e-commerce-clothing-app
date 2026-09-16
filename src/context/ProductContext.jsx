@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect
+} from 'react';
+
 import { products as initialProducts } from '../data/products';
 
 const ProductContext = createContext();
@@ -10,15 +16,24 @@ export function ProductProvider({ children }) {
     return saved ? JSON.parse(saved) : initialProducts;
   });
 
-  // Products ko browser localStorage mein save karna
+  // Products ko localStorage mein save karna
   useEffect(() => {
-    localStorage.setItem(
-      'app_products',
-      JSON.stringify(productsList)
-    );
+    try {
+      localStorage.setItem(
+        'app_products',
+        JSON.stringify(productsList)
+      );
+    } catch (error) {
+      console.error('Unable to save products:', error);
+      alert(
+        'Storage limit reached. Large product images cannot be saved in browser storage.'
+      );
+    }
   }, [productsList]);
 
-  // New product add karna
+  // =========================
+  // ADD PRODUCT
+  // =========================
   const addProduct = (newProduct) => {
     const productWithId = {
       ...newProduct,
@@ -37,11 +52,43 @@ export function ProductProvider({ children }) {
     ]);
   };
 
+  // =========================
+  // UPDATE PRODUCT
+  // =========================
+  const updateProduct = (productId, updatedProduct) => {
+    setProductsList((prev) =>
+      prev.map((product) =>
+        product.id === productId
+          ? {
+              ...product,
+              ...updatedProduct,
+              id: productId,
+              price: Number(updatedProduct.price),
+              originalPrice:
+                Number(updatedProduct.originalPrice) ||
+                Number(updatedProduct.price) * 2
+            }
+          : product
+      )
+    );
+  };
+
+  // =========================
+  // DELETE PRODUCT
+  // =========================
+  const deleteProduct = (productId) => {
+    setProductsList((prev) =>
+      prev.filter((product) => product.id !== productId)
+    );
+  };
+
   return (
     <ProductContext.Provider
       value={{
         productsList,
-        addProduct
+        addProduct,
+        updateProduct,
+        deleteProduct
       }}
     >
       {children}
@@ -49,4 +96,5 @@ export function ProductProvider({ children }) {
   );
 }
 
-export const useProducts = () => useContext(ProductContext);
+export const useProducts = () =>
+  useContext(ProductContext);
