@@ -9,9 +9,8 @@ import {
 } from 'lucide-react';
 
 export default function Contact() {
-  // 🔹 Yahan baad me apni real shop details add kar sakte ho
   const shopEmail = 'your-email@example.com';
-  const shopPhone = '+91 XXXXX XXXXX';
+  const shopPhone = '+91 70002 75661';
   const shopLocation = 'Burhanpur, Madhya Pradesh, India';
 
   const handleSubmit = (e) => {
@@ -36,9 +35,9 @@ export default function Contact() {
             </span>
 
             <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900">
-              Get In{' '}
+              Get{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-fuchsia-500">
-                Touch
+                In Touch
               </span>
             </h1>
 
@@ -111,9 +110,12 @@ export default function Contact() {
                           Phone
                         </p>
 
-                        <p className="mt-1 text-sm font-semibold">
+                        <a
+                          href="tel:+917000275661"
+                          className="mt-1 block text-sm font-semibold hover:text-purple-200 transition-colors"
+                        >
                           {shopPhone}
-                        </p>
+                        </a>
                       </div>
 
                     </div>
@@ -164,11 +166,9 @@ export default function Contact() {
 
                   {/* WhatsApp */}
                   <a
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      alert('Please add your WhatsApp number first.');
-                    }}
+                    href="https://wa.me/917000275661"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="mt-8 w-full flex items-center justify-center gap-2 bg-white text-purple-800 py-3.5 rounded-xl font-bold text-sm hover:bg-purple-50 transition-all shadow-lg"
                   >
                     <MessageCircle className="w-5 h-5" />
@@ -203,7 +203,6 @@ export default function Contact() {
 
                   {/* Name */}
                   <div>
-
                     <label
                       htmlFor="name"
                       className="block text-sm font-bold text-slate-700 mb-2"
@@ -219,12 +218,10 @@ export default function Contact() {
                       placeholder="Enter your name"
                       className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-slate-900 placeholder-gray-400 outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all"
                     />
-
                   </div>
 
                   {/* Email */}
                   <div>
-
                     <label
                       htmlFor="email"
                       className="block text-sm font-bold text-slate-700 mb-2"
@@ -240,12 +237,10 @@ export default function Contact() {
                       placeholder="Enter your email"
                       className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-slate-900 placeholder-gray-400 outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all"
                     />
-
                   </div>
 
                   {/* Phone */}
                   <div>
-
                     <label
                       htmlFor="phone"
                       className="block text-sm font-bold text-slate-700 mb-2"
@@ -260,12 +255,10 @@ export default function Contact() {
                       placeholder="Enter your phone number"
                       className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-slate-900 placeholder-gray-400 outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all"
                     />
-
                   </div>
 
                   {/* Subject */}
                   <div>
-
                     <label
                       htmlFor="subject"
                       className="block text-sm font-bold text-slate-700 mb-2"
@@ -281,12 +274,10 @@ export default function Contact() {
                       placeholder="What can we help you with?"
                       className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-slate-900 placeholder-gray-400 outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all"
                     />
-
                   </div>
 
                   {/* Message */}
                   <div>
-
                     <label
                       htmlFor="message"
                       className="block text-sm font-bold text-slate-700 mb-2"
@@ -302,7 +293,6 @@ export default function Contact() {
                       placeholder="Write your message here..."
                       className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white text-slate-900 placeholder-gray-400 outline-none resize-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all"
                     />
-
                   </div>
 
                   {/* Submit */}

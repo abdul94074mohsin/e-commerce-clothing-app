@@ -3,21 +3,29 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useProducts } from '../context/ProductContext';
 import ProductCard from '../components/ProductCard';
-import { Star, ShoppingBag, Check } from 'lucide-react';
+import {
+  Star,
+  ShoppingBag,
+  Check,
+  MessageCircle
+} from 'lucide-react';
 
 export default function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const { addToCart } = useCart();
   const { productsList } = useProducts();
 
-  // Get current product from ProductContext
+  // Owner WhatsApp number
+  const whatsappNumber = '917000275661';
+
+  // Get current product
   const product = productsList.find(
     (p) => p.id === parseInt(id)
   );
 
-  // Related products:
-  // Same category + current product ko exclude karo
+  // Related products
   const relatedProducts = product
     ? productsList
         .filter(
@@ -28,7 +36,7 @@ export default function ProductDetails() {
         .slice(0, 4)
     : [];
 
-  // Always open product page from top
+  // Open product page from top
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
@@ -64,6 +72,7 @@ export default function ProductDetails() {
     );
   }
 
+  // Add to cart
   const handleAddToCart = () => {
     addToCart(product, selectedSize, selectedColor);
 
@@ -74,9 +83,34 @@ export default function ProductDetails() {
     }, 2000);
   };
 
+  // Buy now
   const handleBuyNow = () => {
     addToCart(product, selectedSize, selectedColor);
     navigate('/cart');
+  };
+
+  // Order directly on WhatsApp
+  const handleWhatsAppOrder = () => {
+    const message = `
+Hello Purple Gallery,
+
+I want to order this product:
+
+Product: ${product.name}
+Price: ₹${product.price}
+${selectedSize ? `Size: ${selectedSize}` : ''}
+${selectedColor ? `Color: ${selectedColor}` : ''}
+
+Please confirm the availability and order details.
+
+Thank you.
+    `.trim();
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -111,6 +145,7 @@ export default function ProductDetails() {
 
               {/* Rating */}
               <div className="flex items-center gap-2 mt-3 text-sm text-amber-500 font-bold flex-wrap">
+
                 <Star className="w-4 h-4 fill-amber-400 text-amber-400 shrink-0" />
 
                 <span>
@@ -120,11 +155,13 @@ export default function ProductDetails() {
                 <span className="text-gray-400 font-normal">
                   ({product.reviewsCount || 0} customer reviews)
                 </span>
+
               </div>
             </div>
 
             {/* Price */}
             <div className="flex items-baseline gap-3 flex-wrap">
+
               <span className="text-3xl font-black text-slate-900">
                 ₹{product.price}
               </span>
@@ -140,6 +177,7 @@ export default function ProductDetails() {
                   {product.discount}
                 </span>
               )}
+
             </div>
 
             {/* Description */}
@@ -159,11 +197,13 @@ export default function ProductDetails() {
             {/* Size Options */}
             {product.sizes && product.sizes.length > 0 && (
               <div>
+
                 <label className="block text-sm font-bold uppercase tracking-wider mb-2 text-slate-800">
                   Select Size
                 </label>
 
                 <div className="flex flex-wrap gap-2">
+
                   {product.sizes.map((size) => (
                     <button
                       key={size}
@@ -178,6 +218,7 @@ export default function ProductDetails() {
                       {size}
                     </button>
                   ))}
+
                 </div>
               </div>
             )}
@@ -185,11 +226,13 @@ export default function ProductDetails() {
             {/* Color Options */}
             {product.colors && product.colors.length > 0 && (
               <div>
+
                 <label className="block text-sm font-bold uppercase tracking-wider mb-2 text-slate-800">
                   Select Color
                 </label>
 
                 <div className="flex flex-wrap gap-2">
+
                   {product.colors.map((color) => (
                     <button
                       key={color}
@@ -204,6 +247,7 @@ export default function ProductDetails() {
                       {color}
                     </button>
                   ))}
+
                 </div>
               </div>
             )}
@@ -237,6 +281,16 @@ export default function ProductDetails() {
 
             </div>
 
+            {/* WhatsApp Order */}
+            <button
+              type="button"
+              onClick={handleWhatsAppOrder}
+              className="w-full bg-green-600 text-white py-3.5 px-4 rounded-xl font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-green-700 transition-colors shadow-md text-sm"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Order on WhatsApp
+            </button>
+
           </div>
         </div>
       </div>
@@ -247,6 +301,7 @@ export default function ProductDetails() {
 
           {/* Section Heading */}
           <div className="flex items-end justify-between mb-7">
+
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-purple-600 mb-2">
                 Explore More
@@ -264,29 +319,40 @@ export default function ProductDetails() {
             <button
               type="button"
               onClick={() =>
-                navigate(`/shop?category=${encodeURIComponent(product.category)}`)
+                navigate(
+                  `/shop?category=${encodeURIComponent(
+                    product.category
+                  )}`
+                )
               }
               className="hidden sm:block text-sm font-bold text-purple-700 hover:text-purple-900 transition-colors"
             >
               View All →
             </button>
+
           </div>
 
           {/* Related Product Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+
             {relatedProducts.map((relatedProduct) => (
               <ProductCard
                 key={relatedProduct.id}
                 product={relatedProduct}
               />
             ))}
+
           </div>
 
           {/* Mobile View All */}
           <button
             type="button"
             onClick={() =>
-              navigate(`/shop?category=${encodeURIComponent(product.category)}`)
+              navigate(
+                `/shop?category=${encodeURIComponent(
+                  product.category
+                )}`
+              )
             }
             className="sm:hidden w-full mt-7 border border-purple-200 text-purple-700 py-3 rounded-xl font-bold text-sm hover:bg-purple-50 transition-colors"
           >
