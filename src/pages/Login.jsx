@@ -36,13 +36,13 @@ export default function Login() {
       return;
     }
 
-    // Admin login
+    // Admin → Admin Panel
     if (email === 'admin@shop.com') {
       navigate('/admin');
       return;
     }
 
-    // Customer login
+    // Customer → Store
     navigate('/');
   };
 
@@ -75,7 +75,7 @@ export default function Login() {
           </div>
 
 
-          {/* Error */}
+          {/* Error Message */}
           {error && (
             <div className="mb-5 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm">
               {error}
@@ -83,7 +83,7 @@ export default function Login() {
           )}
 
 
-          {/* Form */}
+          {/* Login Form */}
           <form
             onSubmit={handleSubmit}
             className="space-y-5"
@@ -165,48 +165,6 @@ export default function Login() {
             </button>
 
           </form>
-
-
-          {/* Demo Credentials */}
-          <div className="mt-7 pt-6 border-t border-gray-200">
-
-            <p className="text-center text-xs font-semibold text-gray-500 mb-3">
-              TEST LOGIN
-            </p>
-
-            <div className="space-y-2 text-xs text-gray-600">
-
-              <div className="bg-purple-50 rounded-lg p-3">
-                <p className="font-semibold text-purple-700">
-                  Admin
-                </p>
-
-                <p>
-                  Email: admin@shop.com
-                </p>
-
-                <p>
-                  Password: Admin@123
-                </p>
-              </div>
-
-              <div className="bg-gray-50 rounded-lg p-3">
-                <p className="font-semibold text-gray-700">
-                  Customer
-                </p>
-
-                <p>
-                  Email: customer@shop.com
-                </p>
-
-                <p>
-                  Password: Customer@123
-                </p>
-              </div>
-
-            </div>
-
-          </div>
 
         </div>
 
